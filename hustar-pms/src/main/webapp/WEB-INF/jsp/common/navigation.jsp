@@ -92,7 +92,21 @@
                         </li>
                         <li>
                             <a href="schList"><i class="fa fa-calendar fa-fw"></i> 일정관리</a>
-                        </li>    
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i> 전자결재<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="signDocTypeList">기안하기</a>
+                                </li>
+                                <li>
+		                            <a href="signListTobe">결재 받을(은) 문서 </a>
+                                </li>
+                                <li>
+		                            <a href="signListTo">결재 할(한) 문서</a>
+                                </li>
+	                        </ul>                             
+                        </li>     
                         <c:if test='${sessionScope.userrole == "A"}'>
 	                        <li>
 	                            <a href="adBoardGroupList"><i class="fa fa-files-o fa-fw"></i> <s:message code="memu.board"/></a>
