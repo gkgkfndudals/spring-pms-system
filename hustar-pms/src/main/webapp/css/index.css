@@ -2,8 +2,7 @@
 	display: inline-block;
     width: 13%;
     padding: 1px;
-    height: 200px;
-	border: 1px solid gray;
+    min-height: 200px;
 }
 
 .calenSlideButton_left {
@@ -16,7 +15,7 @@
 .calenSlideButton_right {
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: 20px; 
     transform: translate(0%,-50%);
     -ms-transform: translate(0%,-50%);
 }
