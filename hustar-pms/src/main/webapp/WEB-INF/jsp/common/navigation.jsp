@@ -88,6 +88,9 @@
                             <a href="boardList"><i class="fa fa-files-o fa-fw"></i> <s:message code="board.boardName"/></a>
                         </li>
                         <li>
+                            <a href="projectList"><i class="fa fa-tasks fa-fw"></i> <s:message code="project.title"/></a>
+                        </li>
+                        <li>
                             <a href="schList"><i class="fa fa-calendar fa-fw"></i> 일정관리</a>
                         </li>    
                         <c:if test='${sessionScope.userrole == "A"}'>
