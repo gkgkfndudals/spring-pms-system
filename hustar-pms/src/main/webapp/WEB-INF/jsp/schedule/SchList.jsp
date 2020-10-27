@@ -81,10 +81,10 @@ function calendarDayMouseout(){
 			<div class="row"> 
 			     <div class="col-lg-10">
 			         <h1>
-			         <a href="#" onclick="fn_moveToURL('schList?year=<c:out value="${searchVO.year}"/>&month=<c:out value="${searchVO.month-1}"/>', '')"><i class="fa fa-angle-left fa-fw"></i></a>
+			         <a href="#" onclick="fn_moveToURL('schList?year=<c:out value="${monthVO.year}"/>&month=<c:out value="${monthVO.month-1}"/>', '')"><i class="fa fa-angle-left fa-fw"></i></a>
 			         
-			         <c:out value="${searchVO.year}"/>년 <c:out value="${searchVO.month}"/>월
-			         <a href="#" onclick="fn_moveToURL('schList?year=<c:out value="${searchVO.year}"/>&month=<c:out value="${searchVO.month+1}"/>', '')"><i class="fa fa-angle-right fa-fw"></i></a>
+			         <c:out value="${monthVO.year}"/>년 <c:out value="${monthVO.month}"/>월
+			         <a href="#" onclick="fn_moveToURL('schList?year=<c:out value="${monthVO.year}"/>&month=<c:out value="${monthVO.month+1}"/>', '')"><i class="fa fa-angle-right fa-fw"></i></a>
 			         </h1>
 			     </div>
 			     <div class="col-lg-2">

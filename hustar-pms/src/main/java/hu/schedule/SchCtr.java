@@ -48,7 +48,7 @@ public class SchCtr {
         List<?> listview  = schSvc.selectCalendar(monthVO, userno);
         
         modelMap.addAttribute("listview", listview);
-        modelMap.addAttribute("searchVO", monthVO);
+        modelMap.addAttribute("monthVO", monthVO);
         modelMap.addAttribute("dayofweek", dayofweek);
         
         return "schedule/SchList";
