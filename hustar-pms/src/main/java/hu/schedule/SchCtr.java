@@ -31,24 +31,24 @@ public class SchCtr {
      * 리스트.
      */
     @RequestMapping(value = "/schList")
-    public String schList(HttpServletRequest request, MonthVO searchVO, ModelMap modelMap) {
+    public String schList(HttpServletRequest request, MonthVO monthVO, ModelMap modelMap) {
         // 페이지 공통: alert
         String userno = request.getSession().getAttribute("userno").toString();
         
         etcSvc.setCommonAttribute(userno, modelMap);
     	
         // 
-        if (searchVO.getYear()==null || "".equals(searchVO.getYear())) {
+        if (monthVO.getYear()==null || "".equals(monthVO.getYear())) {
         	Date today = Util4calen.getToday();
-        	searchVO.setYear(Util4calen.getYear(today).toString());
-        	searchVO.setMonth(Util4calen.getMonth(today).toString());
+        	monthVO.setYear(Util4calen.getYear(today).toString());
+        	monthVO.setMonth(Util4calen.getMonth(today).toString());
         }
-        Integer dayofweek = Util4calen.getDayOfWeek( Util4calen.str2Date(searchVO.getYear() + "-" + searchVO.getMonth()+"-01"));
+        Integer dayofweek = Util4calen.getDayOfWeek( Util4calen.str2Date(monthVO.getYear() + "-" + monthVO.getMonth()+"-01"));
         
-        List<?> listview  = schSvc.selectCalendar(searchVO, userno);
+        List<?> listview  = schSvc.selectCalendar(monthVO, userno);
         
         modelMap.addAttribute("listview", listview);
-        modelMap.addAttribute("searchVO", searchVO);
+        modelMap.addAttribute("searchVO", monthVO);
         modelMap.addAttribute("dayofweek", dayofweek);
         
         return "schedule/SchList";
