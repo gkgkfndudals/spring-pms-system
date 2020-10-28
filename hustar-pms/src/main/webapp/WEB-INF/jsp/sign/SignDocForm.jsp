@@ -39,20 +39,25 @@
 window.onload =function() {
 	  CKEDITOR.replace( 'doccontents', { 'filebrowserUploadUrl': 'upload4ckeditor'});
 }	  
+
 function fn_formSubmit(){
 	CKEDITOR.instances["doccontents"].updateElement();
+
 	if ( ! chkInputValue("#doctitle", "제목")) return false;
 	if ( ! chkInputValue("#doccontents", "내용")) return false;
 	
 	$("#form1").submit();
 } 
+
 function fn_tempSubmit(){
 	CKEDITOR.instances["doccontents"].updateElement();
+
 	if ( ! chkInputValue("#doctitle", "제목")) return false;
 	
 	$("#docstatus").val("0");
 	$("#form1").submit();
 } 
+
 // 결재 경로
 function fn_signPath(){
     $.ajax({
@@ -75,6 +80,7 @@ function deptTreeInUsersActivate(node) {
                 $("#userlist4Users").html(result);
     });
 }
+
 function fn_selectUsers(docsignpath) {
     $("#docsignpath").val(docsignpath);
     $("#popupUsers").modal("hide");
@@ -99,6 +105,7 @@ function fn_selectUsers(docsignpath) {
 	    var signAreaTop = $("<div class='signAreaBottom'>" + arr[1] +"</div>").appendTo(signArea);
 	}
 }
+
 </script>
    
 </head>

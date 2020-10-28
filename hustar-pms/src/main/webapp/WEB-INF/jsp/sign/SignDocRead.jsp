@@ -36,6 +36,7 @@ function fn_sign(){
     $("#popupUser").modal("show");
     
 }
+
 function fn_signSave(){
 	if (confirm("결재 하시겠습니까?")) {
 		$("#dialogForm").submit();

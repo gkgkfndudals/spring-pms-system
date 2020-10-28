@@ -122,6 +122,9 @@
 	                                </li>
 	                            </ul>
 	                        </li>
+	                         <li>
+                                 <a href="adSignDocTypeList"><i class="fa fa-edit fa-fw"></i> 결재문서양식</a>
+                             </li>
                              <li>
                                  <a href="adCodeList"><i class="fa fa-gear fa-fw"></i> <s:message code="memu.code"/></a>
                              </li>

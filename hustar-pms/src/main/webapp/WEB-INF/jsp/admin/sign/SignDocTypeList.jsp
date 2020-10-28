@@ -43,40 +43,57 @@ function fn_formSubmit(){
 
     <div id="wrapper">
 
-		<jsp:include page="../common/navigation.jsp" />
+		<jsp:include page="../../common/navigation.jsp" />
 		
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"><i class="fa fa-edit fa-fw"></i> 기안하기</h1>
+                    <h1 class="page-header"><i class="fa fa-edit fa-fw"></i> 결재문서양식</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             
             <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+		            <button type="button" class="btn btn-default pull-right" onclick="fn_moveToURL('adSignDocTypeForm')">
+		            <i class="fa fa-edit fa-fw"></i> 양식추가</button>      
+				</div>
+            </div>
+            <!-- /.row -->
             <div class="panel panel-default"> 
             	<div class="panel-body">
+					<div class="listHead">
+						<div class="listHiddenField pull-left field60"><s:message code="board.no"/></div>
+						<div class="listTitle">문서종류명</div>
+					</div>
+					
 					<c:if test="${listview.size()==0}">
-						<div class="listBody height200">등록된 양식이 없습니다.<br/>결재문서양식이 등록되어야 합니다. 관리자에게  연락하세요.</div>
+						<div class="listBody height200">
+						</div>
 					</c:if>
 					
-					<br/>
 					<c:forEach var="listview" items="${listview}" varStatus="status">
-						<c:url var="link" value="signDocForm">
+						<c:url var="link" value="adSignDocTypeForm">
 							<c:param name="dtno" value="${listview.dtno}" />
 						</c:url>
 					
-						<a href="${link}">
-				            <div class="panel panel-default" style="width: 150px; height: 200px; display:inline-block; overflow:hidden; "> 
-				            	<div class="panel-heading"><c:out value="${listview.dttitle}"/></div>
-				            	<div class="panel-body"><img src="images/if_survey_49353.png" style="margin: 30px 25px;"/></div>
+						<div class="listBody">
+							<div class="listHiddenField pull-left field60 textCenter"><c:out value="${searchVO.totRow-((searchVO.page-1)*searchVO.displayRowCount + status.index)}"/></div>
+							<div class="listTitle" title="<c:out value="${listview.dttitle}"/>">
+								<a href="${link}"><c:out value="${listview.dttitle}"/></a>
 							</div>
-						</a>
-					</c:forEach>
-						
+						</div>
+					</c:forEach>	
+					
+					<br/>
+					<form role="form" id="form1" name="form1"  method="post">
+					    <jsp:include page="../../common/pagingforSubmit.jsp" />
+				    
+					</form>	
             	</div>    
             </div>
-            <!-- /.row --> 
+            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 

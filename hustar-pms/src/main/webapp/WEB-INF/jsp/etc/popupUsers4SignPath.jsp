@@ -4,6 +4,7 @@
 
 <script>
 var selectedNode = null;
+
 $(function(){
 	$("#deptTree4Users").dynatree({
 		children: <c:out value="${treeStr}" escapeXml="false"/>,
@@ -13,13 +14,20 @@ $(function(){
         node.expand(true);
     });
 });
-function set_Users(usernos, usernms) {
-	var nos = usernos.split(",");
-	var nms = usernms.split(",");
-	for (var i in nos) {
-		$("#seletedUsers > tbody").append("<tr id='tr" + nos[i] +"'><td>" + nms[i] + "</td><td><a href='javascript:fn_UserDelete(" + nos[i] +")'><i class='fa fa-times fa-fw'></i></a></td><tr>");
+
+function set_Users(usernos) {
+	if (usernos==="") {
+		addRow(0, '<c:out value="${sessionScope.userno}"/>', '<c:out value="${sessionScope.usernm}"/>', '');
+		return;
+	}
+	var nos = usernos.split("||");
+	for (var i in nos) { 
+		if (nos[i]==="") continue;
+		var arr = nos[i].split(","); // 사번, 이름, 기안/합의/결제, 직책 
+		addRow(arr[2], arr[0], arr[1], arr[3]);
 	}
 }
+
 function fn_search4Users() {
 	if ( ! chkInputValue("#keyword4Users", "<s:message code="common.keyword"/>")) return false;
 	
@@ -32,32 +40,65 @@ function fn_search4Users() {
 		}    		
     );
 }
-function fn_addUser(userno, usernm, deptnm) {
+function fn_addUser(userno, usernm, deptnm, userpos) {
     
     var chk = document.getElementById("tr"+userno);
     if (chk) {
     	alert("<s:message code="msg.err.existUser"/>");
     	return;
     }
-    
-	$("#seletedUsers > tbody").append("<tr id='tr" + userno +"'><td>" + usernm + "</td><td><a href='javascript:fn_UserDelete(" + userno +")'><i class='fa fa-times fa-fw'></i></a></td><tr>");
+    addRow(2, userno, usernm, userpos);
 }
+
+function addRow(optionIndex, userno, usernm, userpos) {
+	var tr = $("<tr id='tr" + userno +"'>");
+	$("#seletedUsers > tbody").append(tr);
+
+	var td = $("<TD>");
+	tr.append(td);
+	
+	var typearr = ["기안", "합의", "결재"];
+	var select = $("<select>");
+	td.append(select);
+	for (var i=0; i<typearr.length;i++) {
+		var option = $("<option value='"+ i + "'>" + typearr[i] + "</option>");
+		select.append(option);
+		select.val(optionIndex);
+	}
+
+	var td = $("<TD>");
+	tr.append(td);
+	td.text(usernm);
+	
+	td = $("<TD>");
+	tr.append(td);
+	td.html("<a href='javascript:fn_UserDelete(" + userno +")'><i class='fa fa-times fa-fw'></i></a>");
+	
+	if (userpos==="") userpos = typearr[optionIndex];
+	td = $("<TD>");
+	tr.append(td);
+	td.html(userpos);
+	td.css({"display": "none"});
+}
+
 function fn_UserDelete(userno) {
 	$("#tr"+userno).remove();
 }
+
 function fn_closeUsers() {
-	var usernos="", usernms="";
+	var ret = "";
 	$("#seletedUsers > tbody  > tr").each(function() {
 		if (!this.id) return; 
-		usernos += this.id.replace("tr","") + ",";
-		usernms += $(this).find('td:eq(0)').html() + ",";
+		var userno = this.id.replace("tr","");
+		var usernm = $(this).find('td:eq(1)').text();
+		var select = $(this).find('td:eq(0) > select').val();
+		var userpos = $(this).find('td:eq(3)').text();
+		ret += userno + "," +usernm + "," + select + "," + userpos + "||";
 	});
-	if (usernos.length>0) {
-		usernos = usernos.substring(0, usernos.length-1);
-		usernms = usernms.substring(0, usernms.length-1);
-	}
-	fn_selectUsers(usernos, usernms)
+	
+	fn_selectUsers(ret)
 }
+
 </script>    
 
 	  	<div class="modal-dialog modal-lg" role="document">
@@ -106,13 +147,16 @@ function fn_closeUsers() {
 			                    <div class="panel-body maxHeight400">
 									 <table  id="seletedUsers" class="table table-striped table-bordered table-hover">
 										<colgroup>
-											<col width='80%' />
+											<col width='30%' />
+											<col width='60%' />
 											<col width='10%' />
 										</colgroup>
 										<thead>
 											<tr>
+												<th></th> 
 												<th><s:message code="common.name"/></th>
 												<th></th> 
+												<th style="display:none"></th> 
 											</tr>
 										</thead>
 										<tbody>
