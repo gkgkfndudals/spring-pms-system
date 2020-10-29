@@ -36,7 +36,6 @@
 function fn_formSubmit(){
 	document.form1.submit();	
 }
-
 </script>
     
 </head>
@@ -84,7 +83,7 @@ function fn_formSubmit(){
 								<a href="${link}" <c:if test="${listview.brdnotice=='Y'}">class="notice"</c:if>><c:out value="${listview.brdtitle}"/></a>
 								<c:if test="${listview.replycnt>0}">
 									(<c:out value="${listview.replycnt}"/>)
-								</c:if>
+								</c:if>								
 							</div>
 							<div class="showField text-muted small col-lg-12">
 								<c:out value="${listview.brdwriter}"/> 

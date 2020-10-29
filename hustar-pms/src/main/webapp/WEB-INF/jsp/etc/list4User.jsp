@@ -36,7 +36,6 @@
 function fn_formSubmit(){
 	document.form1.submit();	
 }
-
 </script>
     
 </head>

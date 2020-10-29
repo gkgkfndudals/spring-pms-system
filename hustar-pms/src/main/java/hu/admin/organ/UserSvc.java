@@ -28,7 +28,7 @@ public class UserSvc {
      */
     public void insertUser(UserVO param) {
         if (param.getUserno() == null || "".equals(param.getUserno())) {
-             sqlSession.insert("insertUser", param);
+            sqlSession.insert("insertUser", param);
         } else {
             sqlSession.insert("updateUser", param);
         }
