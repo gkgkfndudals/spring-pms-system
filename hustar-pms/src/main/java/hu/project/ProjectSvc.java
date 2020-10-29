@@ -51,4 +51,8 @@ public class ProjectSvc {
 		return sqlSession.selectOne("selectProjectAuthChk", param);
 	}
 	
+	public void deleteProjectOne(String param) {
+		sqlSession.delete("deleteProjectOne", param);
+	}
+	
 }

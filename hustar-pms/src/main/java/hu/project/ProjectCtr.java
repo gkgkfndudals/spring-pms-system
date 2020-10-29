@@ -23,7 +23,7 @@ public class ProjectCtr {
 	private EtcSvc etcSvc;
 	
 	/**
-	 * �봽濡쒖젥�듃 由ъ뒪�듃
+	 * 프로젝트 리스트
 	 */
 	@RequestMapping(value = "/projectList")
 	public String projectList(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
@@ -41,9 +41,22 @@ public class ProjectCtr {
 		return "project/ProjectList";
 	}
 	
+	/**
+	 * 리스트 4 Ajax.
+	 */
+	@RequestMapping(value = "/projectList4Ajax")
+	public String projectList4Ajax(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
+		searchVO.pageCalculate(projectSvc.selectProjectCount(searchVO)); //startRow, endRow
+		List<?> listview = projectSvc.selectProjectList(searchVO);
+		
+		modelMap.addAttribute("searchVO", searchVO);
+		modelMap.addAttribute("listview", listview);
+		
+		return "project/ProjectList4Ajax";
+	}
 	
 	/**
-	 * �벐湲�
+	 * 새 프로젝트
 	 */
 	@RequestMapping(value = "/projectForm")
 	public String projectForm(HttpServletRequest request, ModelMap modelMap) {
@@ -74,7 +87,7 @@ public class ProjectCtr {
 	
 	
 	/**
-	 * ���옣 
+	 * 프로젝트 저장
 	 */
 	@RequestMapping(value = "/projectSave")
     public String projectSave(HttpServletRequest request, ProjectVO projectInfo) {
@@ -92,4 +105,27 @@ public class ProjectCtr {
         
         return "redirect:projectList";
     }
+	
+	/**
+     * 삭제.
+     */
+	@RequestMapping(value = "/projectDelete")
+	public String projectDelete(HttpServletRequest request) {
+		String prno = request.getParameter("prno");
+		String userno = request.getSession().getAttribute("userno").toString();
+		
+		ProjectVO projectInfo = new ProjectVO();
+		projectInfo.setPrno(prno);
+		projectInfo.setUserno(userno);
+		String chk = projectSvc.selectProjectAuthChk(projectInfo);
+		
+		if(chk==null) {
+			return "common/noAuth";
+		}
+		
+		projectSvc.deleteProjectOne(prno);
+		
+		return "redirect:/projectList";
+		
+	}
 }
