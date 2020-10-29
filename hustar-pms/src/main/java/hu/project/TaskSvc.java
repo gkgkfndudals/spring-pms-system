@@ -26,8 +26,5 @@ public class TaskSvc {
 	public List<?> selectTaskList(String param) {
 		return sqlSession.selectList("selectTaskList", param);
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> swk

@@ -56,8 +56,4 @@ public class TaskCtr {
 		return "project/Task";
 	}
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> swk

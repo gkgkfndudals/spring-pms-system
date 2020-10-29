@@ -92,8 +92,4 @@ public class ProjectCtr {
         
         return "redirect:projectList";
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> swk

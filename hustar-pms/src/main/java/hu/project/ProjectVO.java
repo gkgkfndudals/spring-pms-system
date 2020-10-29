@@ -1,27 +1,16 @@
 package hu.project;
 
 public class ProjectVO {
-<<<<<<< HEAD
-    private String prno, 			//프로젝트 번호
-				    prstartdate,	//시작일자
-				    prenddate,		//종료일자
-				    prtitle,		//프로젝트 제목
-				    prdate,			//작성일자
-				    userno,			//사용자번호
-				    usernm, 
-				    prstatus,		//상태
-				    deleteflag;		//삭제
-=======
-    private String prno;	//프로젝트 번호
-	private String prstartdate;	//시작일자
-	private String prenddate;	//종료일자
-	private String prtitle;	//프로젝트 제목
-	private String prdate;	//작성일자
-	private String userno;	//사용자번호
+
+	private String prno; // 프로젝트 번호
+	private String prstartdate; // 시작일자
+	private String prenddate; // 종료일자
+	private String prtitle; // 프로젝트 제목
+	private String prdate; // 작성일자
+	private String userno; // 사용자번호
 	private String usernm;
-	private String prstatus;	//상태
-	private String deleteflag;	//삭제
->>>>>>> swk
+	private String prstatus; // 상태
+	private String deleteflag; // 삭제
 
 	public String getPrno() {
 		return prno;
@@ -95,9 +84,4 @@ public class ProjectVO {
 		this.deleteflag = deleteflag;
 	}
 
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> swk
