@@ -50,7 +50,7 @@ public class ProjectSvc {
 	public String selectProjectAuthChk(ProjectVO param) {
 		return sqlSession.selectOne("selectProjectAuthChk", param);
 	}
-	
+
 	public void deleteProjectOne(String param) {
 		sqlSession.delete("deleteProjectOne", param);
 	}

@@ -4,7 +4,6 @@
 
 <script>
 var selectedNode = null;
-
 $(function(){
 	$("#deptTree").dynatree({
 		children: <c:out value="${treeStr}" escapeXml="false"/>,
@@ -14,8 +13,6 @@ $(function(){
         node.expand(true);
     });
 });
-
-
 </script>    
     	<div class="modal-dialog modal-sm" role="document"> 
     		<div class="modal-content"> 

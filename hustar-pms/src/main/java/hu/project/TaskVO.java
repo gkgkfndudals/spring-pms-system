@@ -5,16 +5,19 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public class TaskVO {
-    private String prno, 		//프로젝트 번호
-    				tsno, 		//업무번호
-				    tsparent, 	//부모업무번호
-				    tssort, 	//정렬
-				    tstitle, 	//업무 제목
-				    tsstartdate, //시작일자
-				    tsenddate, 	//종료일자
-				    tsendreal,	//종료일자(실제)
-				    tsrate; 	//진행율
-    private String userno, usernm; 		// 작업자
+
+    private String prno;	//프로젝트 번호
+    private String tsno;	//업무번호
+    private String tsparent;	//부모업무번호
+    private String tssort;	//정렬
+    private String tstitle;	//업무 제목
+    private String tsstartdate;	//시작일자
+    private String tsenddate;	//종료일자
+    private String tsendreal;	//종료일자(실제)
+    private String tsrate;	//진행율
+    private String userno;
+    private String usernm;	// 작업자
+
     private String statuscolor;	// 업무 진행 상태용 색
     
     /* 첨부파일 */
@@ -123,5 +126,5 @@ public class TaskVO {
 	public void setUploadfile(List<MultipartFile> uploadfile) {
 		this.uploadfile = uploadfile;
 	}
-    
+	
 }

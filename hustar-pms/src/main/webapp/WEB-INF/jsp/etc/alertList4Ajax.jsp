@@ -19,4 +19,4 @@
             <strong>See All Alerts</strong>
             <i class="fa fa-angle-right"></i>
         </a>
-    </li>                        
+    </li>

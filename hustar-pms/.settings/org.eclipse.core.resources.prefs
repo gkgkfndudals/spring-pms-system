@@ -1,3 +1,9 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/main/java=UTF-8
+encoding//src/main/resources/message/message.properties=UTF-8
+encoding//src/main/resources/message/message_en.properties=UTF-8
+=======
 encoding//src/main/resources/message/message.properties=UTF-8
 encoding/<project>=UTF-8
+>>>>>>> syj

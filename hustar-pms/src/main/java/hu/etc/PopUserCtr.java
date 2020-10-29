@@ -28,7 +28,7 @@ public class PopUserCtr {
      */
     @RequestMapping(value = "/popupDept")
        public String popupDept(ModelMap modelMap) {
-        List<?> listview   = deptSvc.selectDepartment();
+        List<?> listview = deptSvc.selectDepartment();
 
         TreeMaker tm = new TreeMaker();
         String treeStr = tm.makeTreeByHierarchy(listview);
@@ -43,7 +43,7 @@ public class PopUserCtr {
      */
     @RequestMapping(value = "/popupUser")
     public String popupUser(ModelMap modelMap) {
-        List<?> listview   = deptSvc.selectDepartment();
+        List<?> listview = deptSvc.selectDepartment();
 
         TreeMaker tm = new TreeMaker();
         String treeStr = tm.makeTreeByHierarchy(listview);
@@ -61,7 +61,7 @@ public class PopUserCtr {
         String deptno = request.getParameter("deptno");
         searchVO.setSearchExt1(deptno);
         
-        List<?> listview  = userSvc.selectUserListWithDept(searchVO);
+        List<?> listview = userSvc.selectUserListWithDept(searchVO);
         
         modelMap.addAttribute("listview", listview);
         
@@ -78,6 +78,16 @@ public class PopUserCtr {
         return "etc/popupUsers";
     }
 
+    /**
+     *  부서리스트 for 사용자들 - 결재 경로 지정용.
+     */
+    @RequestMapping(value = "/popupUsers4SignPath")
+    public String popupUsers4SignPath(ModelMap modelMap) {
+        popupUser(modelMap);
+        
+        return "etc/popupUsers4SignPath";
+    }
+    
     /**
      * User 리스트  for 사용자들.
      */

@@ -4,7 +4,6 @@
 
 <script>
 var selectedNode = null;
-
 $(function(){
 	$("#tree").dynatree({
 		children: <c:out value="${treeStr}" escapeXml="false"/>,
@@ -14,7 +13,6 @@ $(function(){
         node.expand(true);
     });
 });
-
 function fn_search() {
 	if ( ! chkInputValue("#searchKeyword", "<s:message code="common.keyword"/>")) return false;
 	

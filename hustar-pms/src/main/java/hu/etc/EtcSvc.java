@@ -20,7 +20,6 @@ public class EtcSvc {
         modelMap.addAttribute("alertcount", alertcount);    	
     }
 
-    
     public Integer selectAlertCount(String param) {
         return sqlSession.selectOne("selectAlertCount", param);
     }

@@ -16,7 +16,7 @@ public class PageVO {
     public void pageCalculate(Integer total) {
         getPage();
         totRow  = total;
-        totPage    = (int) ( total / displayRowCount );
+        totPage = (int) ( total / displayRowCount );
         
         if ( total % displayRowCount > 0 ) {
             totPage++;

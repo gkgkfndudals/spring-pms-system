@@ -24,7 +24,7 @@
          INNER JOIN COM_USER CU ON PP.USERNO=CU.USERNO
          INNER JOIN COM_CODE CC ON PP.PRSTATUS=CC.CODECD
          <include refid="includeProject"/>
-           AND CC.CLASSNO=2
+           AND CC.CLASSNO=7
          ORDER BY PRNO DESC 
          <if test="rowStart != null">
              LIMIT ${rowStart-1}, ${displayRowCount}

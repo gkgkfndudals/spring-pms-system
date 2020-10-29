@@ -4,7 +4,6 @@
 
 <script>
 var selectedNode = null;
-
 $(function(){
 	$("#deptTree4Users").dynatree({
 		children: <c:out value="${treeStr}" escapeXml="false"/>,
@@ -14,7 +13,6 @@ $(function(){
         node.expand(true);
     });
 });
-
 function set_Users(usernos, usernms) {
 	var nos = usernos.split(",");
 	var nms = usernms.split(",");
@@ -22,7 +20,6 @@ function set_Users(usernos, usernms) {
 		$("#seletedUsers > tbody").append("<tr id='tr" + nos[i] +"'><td>" + nms[i] + "</td><td><a href='javascript:fn_UserDelete(" + nos[i] +")'><i class='fa fa-times fa-fw'></i></a></td><tr>");
 	}
 }
-
 function fn_search4Users() {
 	if ( ! chkInputValue("#keyword4Users", "<s:message code="common.keyword"/>")) return false;
 	
@@ -48,7 +45,6 @@ function fn_addUser(userno, usernm, deptnm) {
 function fn_UserDelete(userno) {
 	$("#tr"+userno).remove();
 }
-
 function fn_closeUsers() {
 	var usernos="", usernms="";
 	$("#seletedUsers > tbody  > tr").each(function() {
@@ -62,7 +58,6 @@ function fn_closeUsers() {
 	}
 	fn_selectUsers(usernos, usernms)
 }
-
 </script>    
 
 	  	<div class="modal-dialog modal-lg" role="document">
