@@ -41,11 +41,7 @@ public class TaskSvc {
 	public List<?> selectTaskList(String param) {
 		return sqlSession.selectList("selectTaskList", param);
 	}
-<<<<<<< HEAD
 
-=======
-	
-	
 	
 	/**
 	 * Task 저장
@@ -160,5 +156,4 @@ public class TaskSvc {
 		}
 	}
 	
->>>>>>> syj
 }
