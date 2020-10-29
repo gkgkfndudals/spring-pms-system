@@ -36,8 +36,7 @@ public class UserCtr {
 	public String user(HttpServletRequest request, ModelMap modelMap) {
 		String userno = request.getSession().getAttribute("userno").toString();
 		
-		Integer alertcount = etcSvc.selectAlertCount(userno);
-		modelMap.addAttribute("alertcount", alertcount);
+        etcSvc.setCommonAttribute(userno, modelMap);
 		
 		List<?> listview = deptSvc.selectDepartment();
 		
@@ -54,7 +53,9 @@ public class UserCtr {
 	 */
 	public String common_UserList(ModelMap modelMap, String deptno) {
 		List<?> listview = userSvc.selectUserList(deptno);
+		
 		modelMap.addAttribute("listview", listview);
+		
 		return "admin/organ/UserList";
 	}
 	
@@ -82,9 +83,9 @@ public class UserCtr {
 	@RequestMapping(value = "/adUserSave")
 	public String userSave(HttpServletResponse response, ModelMap modelMap, UserVO userInfo) {
 		if(userInfo.getUserno() ==null || "".equals(userInfo.getUserno())) {
-			System.out.println(" ================> adUserSave null!!!");
+
 			String userid = userSvc.selectUserID(userInfo.getUserid()); //userid가 null로 나온다 -> 아직 신규 사용자를 등록하지 않았으니까
-			System.out.println("================> " + userid);
+
 			if(userid !=null) {
 				return "common/blank";
 			}
@@ -95,9 +96,9 @@ public class UserCtr {
 		if(fileInfo != null) {
 			userInfo.setPhoto(fileInfo.getRealname());
 		}
-		System.out.println("=========> insertUser전 :" + userInfo.getUserid() + userInfo.getUsernm());
+
 		userSvc.insertUser(userInfo);
-		System.out.println("=========> insertUser후 :" + userInfo.getUserid() + userInfo.getUsernm() + userInfo.getUserpw() + userInfo.getDeptno());
+
 		return common_UserList(modelMap, userInfo.getDeptno());
 	}
 	

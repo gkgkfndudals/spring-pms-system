@@ -27,7 +27,7 @@ public class List4User {
         
         searchVO.pageCalculate( etcSvc.selectList4UserCount(searchVO) ); // startRow, endRow
         
-        List<?> listview   = etcSvc.selectList4User(searchVO);
+        List<?> listview = etcSvc.selectList4User(searchVO);
 
         modelMap.addAttribute("listview", listview);
         modelMap.addAttribute("searchVO", searchVO);

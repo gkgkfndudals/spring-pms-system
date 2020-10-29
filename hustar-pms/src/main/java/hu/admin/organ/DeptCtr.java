@@ -30,8 +30,7 @@ public class DeptCtr {
 	public String department(HttpServletRequest request, ModelMap modelMap) {
 		String userno = request.getSession().getAttribute("userno").toString();
 
-		Integer alertcount = etcSvc.selectAlertCount(userno);
-		modelMap.addAttribute("alertcount", alertcount);
+		etcSvc.setCommonAttribute(userno, modelMap);
 
 		List<?> listview = deptSvc.selectDepartment();
 
@@ -48,9 +47,10 @@ public class DeptCtr {
 	 */
 	@RequestMapping(value = "/adDepartmentRead")
 	public void departmentRead(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("===============> adDepartmentRead" );
 		String deptno = request.getParameter("deptno");
+		
 		DepartmentVO deptInfo = deptSvc.selectDepartmentOne(deptno);
+		
 		UtilEtc.responseJsonValue(response, deptInfo);
 	}
 	
@@ -58,7 +58,7 @@ public class DeptCtr {
      * 부서 등록.
      */
     @RequestMapping(value = "/adDepartmentSave")
-       public void departmentSave(HttpServletResponse response, DepartmentVO deptInfo) {
+    public void departmentSave(HttpServletResponse response, DepartmentVO deptInfo) {
         
         deptSvc.insertDepartment(deptInfo);
         
@@ -69,7 +69,7 @@ public class DeptCtr {
      * 부서 삭제.
      */
     @RequestMapping(value = "/adDepartmentDelete")
-       public void departmentDelete(HttpServletRequest request, HttpServletResponse response) {
+    public void departmentDelete(HttpServletRequest request, HttpServletResponse response) {
         
         String deptno = request.getParameter("deptno");
         
