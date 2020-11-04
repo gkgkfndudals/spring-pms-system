@@ -128,6 +128,9 @@
                              <li>
                                  <a href="adCodeList"><i class="fa fa-gear fa-fw"></i> <s:message code="memu.code"/></a>
                              </li>
+                             <li>
+                            <a href="search"><i class="fa fa-search fa-fw"></i> 통합검색</a>
+                             </li>
 	                	</c:if>	        
                     </ul>
                 </div>

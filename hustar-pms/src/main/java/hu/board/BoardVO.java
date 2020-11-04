@@ -11,12 +11,14 @@ public class BoardVO {
     private String brdtitle; 
     private String brdwriter; 
     private String brdmemo; 
-    private String brddate; 
+    private String brddate;
+    private String brdtime;
     private String brdhit;  
     private String brddeleteflag; 
     private String filecnt;
     private String replycnt;
     private String userno;
+    private String usernm;
     private String brdnotice;
     private String brdlike;
     private String brdlikechk;          // like button click check
@@ -80,6 +82,14 @@ public class BoardVO {
     public void setBrddate(String brddate) {
         this.brddate = brddate;
     }
+    
+    public String getBrdtime() {
+		return brdtime;
+	}
+
+	public void setBrdtime(String brdtime) {
+		this.brdtime = brdtime;
+	}
 
     public String getBrdhit() {
         return brdhit;
@@ -128,6 +138,14 @@ public class BoardVO {
     public void setUserno(String userno) {
         this.userno = userno;
     }
+    
+    public String getUsernm() {
+		return usernm;
+	}
+
+	public void setUsernm(String usernm) {
+		this.usernm = usernm;
+	}
 
     public String getBrdnotice() {
         return brdnotice;

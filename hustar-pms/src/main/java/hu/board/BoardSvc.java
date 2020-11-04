@@ -182,5 +182,22 @@ public class BoardSvc {
         sqlSession.delete("deleteBoardReply", param);
         
         return true;
-    }    
+    }
+    
+    /* =============================================================== */
+    /**
+     * 색인용 데이터 추출. 
+     * 마지막 색인 이후의 데이터. 
+     */    
+    public List<?> selectBoards4Indexing(String param) {
+        return sqlSession.selectList("selectBoards4Indexing", param);
+    }
+    
+    public List<?> selectBoardReply4Indexing(Field3VO param) {
+        return sqlSession.selectList("selectBoardReply4Indexing", param);
+    }
+    
+    public List<?> selectBoardFiles4Indexing(Field3VO param) {
+        return sqlSession.selectList("selectBoardFiles4Indexing", param);
+    }
 }

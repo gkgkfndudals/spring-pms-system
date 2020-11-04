@@ -160,8 +160,7 @@ public class FileUtil {
 		return path + filename.substring(0,4) + "/";
 	}
 	
-	///////////////////////////////////////////////////
-	public String getFileExtension(String filename) {
+	public static String getFileExtension(String filename) {
         Integer mid = filename.lastIndexOf(".");
         return filename.substring(mid + 1, filename.length());
   }

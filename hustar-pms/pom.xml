@@ -52,6 +52,18 @@
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
 		</dependency>
+		
+		<!-- tika -->                        
+ 		<dependency>
+    		<groupId>org.apache.tika</groupId>
+    		<artifactId>tika-core</artifactId>
+    		<version>1.23</version>
+  		</dependency>
+		<dependency>
+    		<groupId>org.apache.tika</groupId>
+    		<artifactId>tika-parsers</artifactId>
+    		<version>1.23</version>
+		</dependency>
         
 		<!-- log -->                        
 		<dependency>
@@ -155,7 +167,14 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.14</version>
-        </dependency>        
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client -->
+		<dependency>
+    		<groupId>org.elasticsearch.client</groupId>
+    		<artifactId>elasticsearch-rest-high-level-client</artifactId>
+    		<version>7.4.2</version>
+		</dependency>
     </dependencies>
 
   <build>
