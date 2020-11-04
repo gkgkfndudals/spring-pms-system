@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import hu.common.DateVO;
 import hu.common.Field3VO;
+import hu.common.SearchVO;
 import hu.common.Util4calen;
 import hu.etc.EtcSvc;
+import hu.project.ProjectSvc;
 
 @Controller
 public class IndexCtr {
@@ -23,10 +25,13 @@ public class IndexCtr {
 	
 	@Autowired
 	private EtcSvc etcSvc;
+	
+	@Autowired
+	private ProjectSvc projectSvc;
 
 	///////// 메인 페이지/////////////////
 	@RequestMapping(value = "/index")
-	public String index(HttpServletRequest request, ModelMap modelMap) {
+	public String index(HttpServletRequest request, SearchVO searchVO, ModelMap modelMap) {
 		String userno = request.getSession().getAttribute("userno").toString();
 		etcSvc.setCommonAttribute(userno, modelMap);
 		
@@ -34,10 +39,19 @@ public class IndexCtr {
 		
 		calCalen(userno, today, modelMap);
 
+        if (!"".equals(searchVO.getSearchKeyword())) {
+        	searchVO.setSearchType("prtitle");
+        }
+        
+        searchVO.setDisplayRowCount(12);
+        searchVO.pageCalculate( projectSvc.selectProjectCount(searchVO) ); // startRow, endRow
+        
+        List<?> projectList  = projectSvc.selectProjectList(searchVO);
 		List<?> listview = indexSvc.selectRecentNews();
 		List<?> noticeList = indexSvc.selectNoticeListTop5();
 		List<?> listtime = indexSvc.selectTimeLine();
 
+		modelMap.addAttribute("projectList", projectList);
 		modelMap.addAttribute("listview", listview);
 		modelMap.addAttribute("noticeList", noticeList);
 		modelMap.addAttribute("listtime", listtime);

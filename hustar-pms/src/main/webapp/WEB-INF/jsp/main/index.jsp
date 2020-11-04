@@ -26,9 +26,11 @@
     <![endif]-->
 
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <script src="css/sb-admin/bootstrap.min.js"></script>
     <script src="css/sb-admin/metisMenu.min.js"></script>
     <script src="css/sb-admin/sb-admin-2.js"></script>
+    <script src="js/project9.js"></script>
 <script>
 function fn_moveDate(date){
     $.ajax({
@@ -129,6 +131,10 @@ function calendarDayMouseover(event, ssno, cddate){
 function calendarDayMouseout(){
 	$(".calendarTooltip").hide();
 }
+
+function fn_formSubmit() {
+	document.form1.submit();
+}
 </script>
     
 </head>
@@ -140,6 +146,62 @@ function calendarDayMouseout(){
         <jsp:include page="../common/navigation.jsp" />
         
         <div id="page-wrapper">
+        	<p>&nbsp;</p>     
+        	<!-- /.row -->
+        	<div class="row">
+                <div class="col-lg-12">
+					<br/>
+					<form role="form" id="form1" name="form1"  method="post">
+					    <jsp:include page="../common/pagingforSubmit.jsp" />
+				    
+						<div class="form-group">
+		                   <div class="input-group custom-search-form col-lg-3">
+	                            <input class="form-control" placeholder="Search..." type="text" name="searchKeyword" 
+	                                	   value='<c:out value="${searchVO.searchKeyword}"/>' >
+	                            <span class="input-group-btn">
+	                                <button class="btn btn-default" onclick="fn_formSubmit()">
+	                                    <i class="fa fa-search"></i>
+	                                </button>
+	                                
+	                            </span>
+	                            
+	                       </div>
+						</div>
+						
+					</form>	
+
+            	</div>
+            </div>  
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+			         <button type="button" class="btn btn-default pull-right" onclick="fn_moveToURL('projectForm')">
+			         <i class="fa fa-edit fa-fw"></i> <s:message code="project.new"/></button>
+				</div>
+            </div>
+            <p>&nbsp;</p>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+					<c:forEach var="projectList" items="${projectList}" varStatus="status">
+						<c:url var="link" value="task">
+							<c:param name="prno" value="${projectList.prno}" />
+						</c:url>
+		                <div class="col-lg-4">
+		                    <div class="panel panel-default">
+		                        <div class="panel-heading">
+		                            <a href="${link}"><c:out value="${projectList.prtitle}"/></a>
+		                        </div>
+		                        <div class="panel-body">
+		                            <p><c:out value="${projectList.usernm}"/> (<c:out value="${projectList.prstatus}"/>)</p>
+									<p><c:out value="${projectList.prstartdate}"/>~<c:out value="${projectList.prenddate}"/></p>
+		                        </div>
+		                    </div>
+		                </div>					
+					</c:forEach>	
+            	</div>    
+            </div>
+            <!-- /.row -->    
             <div id="calenDiv" class="row">
                 <jsp:include page="indexCalen.jsp" />
             </div>
