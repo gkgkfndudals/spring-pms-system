@@ -46,8 +46,8 @@ public class IndexingCtr {
     private BoardSvc boardSvc;
     
     static final Logger logger = LoggerFactory.getLogger(IndexingCtr.class);
-    static final String INDEX_NAME = "project9";
-    static final String LAST_FILE = "D:\\project9.last";
+    static final String INDEX_NAME = "pms";
+    static final String LAST_FILE = "D:\\pms.last";
     static final String FILE_EXTENTION = "doc,ppt,xls,docx,pptx,xlsx,pdf,txt,zip,hwp";
     static boolean is_indexing = false;
     private Properties lastFileProps = null;            // 마지막 색인값 보관

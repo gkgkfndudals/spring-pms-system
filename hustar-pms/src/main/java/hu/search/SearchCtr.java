@@ -35,7 +35,7 @@ public class SearchCtr {
 
     static final Logger logger = LoggerFactory.getLogger(SearchCtr.class);
     static final Integer DISPLAY_COUNT = 5;
-    static final String INDEX_NAME = "project9";
+    static final String INDEX_NAME = "pms";
     static final String[] HIGHLIGHT_FIELDS = { "brdwriter", "brdtitle", "brdmemo" };
     static final String[] INCLUDE_FIELDS = new String[] {"brdno", "userno", "brddate", "brdtime", "brdtitle", "brdwriter", "brdmemo"}; // 값을 가지고 올 필드
 
