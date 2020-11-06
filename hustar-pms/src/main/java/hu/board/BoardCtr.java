@@ -219,6 +219,7 @@ public class BoardCtr {
 		String brdno = request.getParameter("brdno");
 		String userno = request.getSession().getAttribute("userno").toString();
 
+		
 		boardSvc.insertBoardLike(new Field3VO(brdno, userno, null));
 
 		UtilEtc.responseJsonValue(response, "OK");

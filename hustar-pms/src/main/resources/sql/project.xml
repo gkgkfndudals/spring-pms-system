@@ -13,8 +13,9 @@
 
     <select id="selectProjectCount" resultType="Integer" parameterType="hu.common.SearchVO">
         SELECT COUNT(*)
-          FROM PRJ_PROJECT PP
-         <include refid="includeProject"/>
+        FROM PRJ_PROJECT PP
+		INNER JOIN COM_USER CU ON PP.USERNO=CU.USERNO
+        <include refid="includeProject"/>
     </select> 
 
 	<select id="selectProjectList" resultType="hu.project.ProjectVO" parameterType="hu.common.SearchVO">

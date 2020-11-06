@@ -60,6 +60,10 @@ $(function() {
 			if (field=="usernm") {
 				fn_searchUsers(row);
 			}
+			
+			if (field="tsrate"){
+				fn_searchTaskDetail(row);
+			}
 		}	
 		</c:if>
 	});
@@ -237,6 +241,17 @@ function removeIt(){
 }
 
 ////////////////////////////////////////////////
+function fn_searchTaskDetail(row) {
+	 $.ajax({
+	    	url: "popupTaskDetail",
+			type: "post"    	
+	    }).success(function(result){
+	    			$("#popupTaskDetail").html(result);
+			}    		
+	    );
+		$("#popupTaskDetail").modal("show");
+}
+
 function fn_searchUsers(row){
     $.ajax({
     	url: "popupUsers",
@@ -356,7 +371,7 @@ function fn_copyTaskDialog() {
 							<th data-options="field:'tsstartdate',width:80,editor:'datebox'"><s:message code="project.startdate"/></th>
 							<th data-options="field:'tsenddate',width:80,editor:'datebox'"><s:message code="project.enddate"/></th>
 							<th data-options="field:'tsendreal',width:80,editor:'datebox'"><s:message code="project.endreal"/></th>
-							<th data-options="field:'tsrate',width:80,formatter:formatProgress,editor:'numberbox'"><s:message code="project.rate"/></th>
+							<th data-options="field:'tsrate',width:80,formatter:formatProgress"><s:message code="project.rate"/></th>
 							<th data-options="field:'usernm',width:80"><s:message code="project.worker"/></th>
 						</tr>
 					</thead>
@@ -373,6 +388,9 @@ function fn_copyTaskDialog() {
     <div id="popupUsers" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	</div>
 
+	<div id="popupTaskDetail" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	</div>
+	
     <div id="projectList" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	</div>
     

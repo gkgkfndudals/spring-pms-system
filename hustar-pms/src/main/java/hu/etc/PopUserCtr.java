@@ -97,4 +97,11 @@ public class PopUserCtr {
         
         return "etc/popupUsers4Users";
     }    
+    
+    @RequestMapping(value = "/popupTaskDetail")
+    public String popupTaskDetail(ModelMap modelMap) {
+    	System.out.println("뒷단입니다");
+    	
+    	return "etc/popupTaskDetail";
+    }
 }
