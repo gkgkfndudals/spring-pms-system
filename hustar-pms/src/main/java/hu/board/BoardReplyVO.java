@@ -13,6 +13,7 @@ public class BoardReplyVO {
     private String redepth;
     private Integer reorder;
     private String userno;
+    private String usernm;
     private String photo;
 
     public String getRememoByHTML() {
@@ -90,6 +91,14 @@ public class BoardReplyVO {
     public void setUserno(String userno) {
         this.userno = userno;
     }
+    
+    public String getUsernm() {
+		return usernm;
+	}
+
+	public void setUsernm(String usernm) {
+		this.usernm = usernm;
+	}
 
     public String getPhoto() {
         return photo;

@@ -23,14 +23,10 @@
          ORDER BY PTU.USERNO, TSNO 
     </select> 
     
-    
-    
     <insert id="insertTask" parameterType = "hu.project.TaskVO" useGeneratedKeys="true" keyProperty="tsno">
     	INSERT INTO PRJ_TASK(PRNO, TSPARENT, TSSORT, TSTITLE,  TSSTARTDATE, TSENDDATE, TSENDREAL, TSRATE, DELETEFLAG)
         VALUES (#{prno}, #{tsparent}, #{tssort}, #{tstitle}, #{ tsstartdate}, #{tsenddate},  #{tsendreal},#{tsrate}, 'N')
     </insert>
-    
-    
     
     <update	id="updateTask" parameterType="hu.project.TaskVO">
     	UPDATE PRJ_TASK
@@ -57,11 +53,6 @@
     	SET DELETEFLAG='Y'
     	WHERE TSNO=#{tsno}
     </delete>
-    
-    
-    
-    
-    
     
     <delete id="deleteTaskUser" parameterType="String" >
     	DELETE FROM PRJ_TASKUSER WHERE TSNO = #{tsno}

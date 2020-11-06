@@ -106,7 +106,21 @@
 		                            <a href="signListTo">결재 할(한) 문서</a>
                                 </li>
 	                        </ul>                             
-                        </li>     
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 메일<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="mailForm">새메일</a> 
+                                </li>
+                                <li>
+		                            <a href="receiveMails">받은 메일</a>
+                                </li>
+                                <li>
+		                            <a href="sendMails">보낸 메일</a>
+                                </li>
+	                        </ul>                             
+                        </li>        
                         <c:if test='${sessionScope.userrole == "A"}'>
 	                        <li>
 	                            <a href="adBoardGroupList"><i class="fa fa-files-o fa-fw"></i> <s:message code="memu.board"/></a>
@@ -127,6 +141,9 @@
                              </li>
                              <li>
                                  <a href="adCodeList"><i class="fa fa-gear fa-fw"></i> <s:message code="memu.code"/></a>
+                             </li>
+                             <li>
+                            <a href="search"><i class="fa fa-search fa-fw"></i> 통합검색</a>
                              </li>
 	                	</c:if>	        
                     </ul>

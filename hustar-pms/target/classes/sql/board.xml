@@ -247,4 +247,31 @@
          WHERE RENO=#{reno}       
     </update>
     
+    <!-- ===============================================================================-->
+    <select id="selectBoards4Indexing" resultType="hu.board.BoardVO" parameterType="String">
+		SELECT BGNO, BRDNO, CU.USERNM, TB.USERNO, BRDTITLE, BRDMEMO
+			 , LEFT(BRDDATE, 10) BRDDATE, RIGHT(BRDDATE, 8) BRDTIME 
+		  FROM TBL_BOARD TB
+		 INNER JOIN COM_USER CU ON CU.USERNO=TB.USERNO 
+		 WHERE TB.BRDDELETEFLAG='N' 
+           AND BRDNO &gt; #{brdno}
+		 ORDER BY BRDNO 
+		 limit 20
+    </select>
+    
+    <select id="selectBoardReply4Indexing" resultType="hu.board.BoardReplyVO" parameterType="hu.common.Field3VO">
+		SELECT BRDNO, RENO, USERNM, TBR.USERNO, REMEMO, REDATE 
+		  FROM TBL_BOARDREPLY TBR
+		 INNER JOIN COM_USER CU ON CU.USERNO=TBR.USERNO 
+           AND RENO &gt; #{field2} AND BRDNO &lt;= #{field1} 
+		 WHERE REDELETEFLAG='N'
+         ORDER BY RENO 
+    </select>
+            
+    <select id="selectBoardFiles4Indexing" resultType="hu.common.FileVO" parameterType="hu.common.Field3VO">
+        SELECT BRDNO parentPK, FILENO, FILENAME, REALNAME, FILESIZE
+          FROM TBL_BOARDFILE
+         WHERE FILENO &gt; #{field2}  AND BRDNO &lt;= #{field1}
+         ORDER BY FILENO 
+    </select> 
 </mapper>
